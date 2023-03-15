@@ -29,6 +29,3 @@ networks:
       config:
         - subnet: 172.19.1.36/30
           gateway: 172.19.1.37
-  websites:
-    name: websites
-    external: true
