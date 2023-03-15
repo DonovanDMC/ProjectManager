@@ -18,7 +18,7 @@ services:
             memory: 128M
     networks:
       default:
-        ipv4_address: 172.19.3.38
+        ipv4_address: 172.19.1.38
 
 networks:
   default:
@@ -28,7 +28,7 @@ networks:
       driver: default
       config:
         - subnet: 172.19.1.36/30
-          gateway: 172.19.3.37
+          gateway: 172.19.1.37
   websites:
     name: websites
     external: true
