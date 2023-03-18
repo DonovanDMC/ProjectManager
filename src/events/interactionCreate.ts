@@ -16,6 +16,13 @@ export default new ClientEvent("interactionCreate", async function interactionCr
         return;
     }
 
+    if (interaction.member?.pending) {
+        return interaction.createMessage({
+            content: "You need to pass the server's membership screening before you can use this button.",
+            flags:   MessageFlags.EPHEMERAL
+        });
+    }
+
     const v = Config.projects.find(p => p.code === invite);
     if (v) {
         if (interaction.member!.roles.includes(v.role)) {
