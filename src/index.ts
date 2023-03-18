@@ -1,9 +1,9 @@
 const initTime = process.hrtime.bigint();
 import ProjectManager from "./main.js";
 import Config from "./config/index.js";
-import { StatusServer, Time } from "@uwu-codes/utils";
+import { Time } from "@uwu-codes/utils";
 import Logger from "@uwu-codes/logger";
-import { type Server } from "node:http";
+import StatusServer, { type AnyServer } from "@uwu-codes/status-server";
 Logger._saveToRotatingFile(Config.logsDirectory);
 
 const bot = new ProjectManager(initTime);
@@ -32,7 +32,7 @@ process
         process.kill(process.pid, "SIGTERM");
     });
 
-let statusServer: Server | undefined;
+let statusServer: AnyServer | undefined;
 
 if (Config.isDocker) {
     statusServer = StatusServer(() => bot.ready);
