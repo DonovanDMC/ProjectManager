@@ -27,8 +27,7 @@
     "@oceanicjs/builders": "^1.1.7",
     "@uwu-codes/logger": "^2.0.1",
     "@uwu-codes/utils": "^1.3.2",
-    "oceanic.js": "^1.5.1",
-    "tslog": "^3.3.4"
+    "oceanic.js": "^1.5.1"
   },
   "type": "module",
   "devDependencies": {
