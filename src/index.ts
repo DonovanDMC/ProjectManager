@@ -1,9 +1,10 @@
 const initTime = process.hrtime.bigint();
 import ProjectManager from "./main.js";
 import Config from "./config/index.js";
-import Logger from "./util/Logger.js";
 import { StatusServer, Time } from "@uwu-codes/utils";
+import Logger from "@uwu-codes/logger";
 import { type Server } from "node:http";
+Logger._saveToRotatingFile(Config.logsDirectory);
 
 const bot = new ProjectManager(initTime);
 await bot.rest.getBotGateway().then(function preLaunchInfo({ sessionStartLimit: { remaining, total, resetAfter }, shards }) {
@@ -16,7 +17,10 @@ await bot.rest.getBotGateway().then(function preLaunchInfo({ sessionStartLimit: 
 
 process
     .on("uncaughtException", err => Logger.getLogger("Uncaught Exception").error(err))
-    .on("unhandledRejection", (r, p) => Logger.getLogger("Unhandled Rejection").error(r, p))
+    .on("unhandledRejection", (r, p) => {
+        Logger.getLogger("Unhandled Rejection | Reason").error(r);
+        Logger.getLogger("Unhandled Rejection | Promise").error(p);
+    })
     .once("SIGINT", () => {
         bot.shutdown();
         statusServer?.close();

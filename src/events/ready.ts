@@ -1,7 +1,7 @@
 import ClientEvent from "../util/ClientEvent.js";
-import Logger from "../util/Logger.js";
 import Config from "../config/index.js";
 import { invitesFile } from "../util/InviteTracker.js";
+import Logger from "@uwu-codes/logger";
 import { Time } from "@uwu-codes/utils";
 import { ComponentBuilder } from "@oceanicjs/builders";
 import { ButtonStyles, type MessageActionRow } from "oceanic.js";
