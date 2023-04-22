@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import PrivateConfiguration from "./private/private.js";
 import client from "./private/client.json" assert { type: "json" };
-import projects from "./projects.json" assert { type: "json" };
 import emojis from "./emojis.json" assert { type: "json" };
+import { type IProjects } from "../util/schema.js";
 import { EnvOverride } from "@uwu-codes/utils";
 import { ActivityTypes, type UpdatePresenceOptions, type ClientOptions } from "oceanic.js";
 import { access, readFile } from "node:fs/promises";
@@ -11,6 +11,7 @@ const host = await readFile("/data/hostname", "utf8").then(val => val.trim(), ()
 
 const isDocker = await access("/.dockerenv").then(() => true, () => false) || await readFile("/proc/1/cgroup", "utf8").then(contents => contents.includes("docker"));
 let debugLogging: boolean;
+const projects = JSON.parse(await readFile(new URL("projects.json", import.meta.url).pathname, "utf8")) as IProjects;
 export class Configuration extends PrivateConfiguration {
     static get isDevelopment() {
         return !isDocker || host === "DONOVAN-PC";
@@ -32,12 +33,19 @@ export class Configuration extends PrivateConfiguration {
         return client;
     }
 
-    static get projects(){
+    static get projects() {
         return projects;
     }
 
+    static get roles() {
+        return this.projects.flatMap(p => p.roles.flatMap(r => ({
+            ...r,
+            guild: p.id
+        })));
+    }
+
     static get invites() {
-        return Object.fromEntries(Object.entries(this.projects).map(([k, v]) => [v.code, k]));
+        return Object.fromEntries(Object.entries(this.roles).map(([k, v]) => [v.code, k]));
     }
 
     static get emojis() {

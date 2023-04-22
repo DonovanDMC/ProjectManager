@@ -1,29 +1,58 @@
 [
   {
-    "role": "1085325866906681384",
-    "code": "SwxbbmMKQH",
-    "name": "Project Expansion",
-    "emoji": {
-      "name": "ProjectExpansion",
-      "id": "1085644378606927935"
-    }
+    "name": "Donovan's Project Hub",
+    "id": "957278461993558046",
+    "message": {
+      "channel": "1085640993514197136",
+      "content": "This server is home to multiple projects. Due to them having vastly different natures, they're each locked behind their own roles. Use the buttons below to manage which projects you can view. You've already been given access to a project based on the invite you joined with."
+    },
+    "roles": [
+      {
+        "id": "1085325866906681384",
+        "code": "SwxbbmMKQH",
+        "name": "Project Expansion",
+        "emoji": {
+          "name": "ProjectExpansion",
+          "id": "1085644378606927935"
+        }
+      },
+      {
+        "id": "1085456103854313522",
+        "code": "pHuNHKfmAr",
+        "name": "Maid Boye",
+        "emoji": {
+          "name": "MaidBoye",
+          "id": "1085644411884552363"
+        }
+      },
+      {
+        "id": "1085456128500056068",
+        "code": "KaWyr383YH",
+        "name": "E621 NPM",
+        "emoji": {
+          "name": "E621",
+          "id": "1085644765174960190"
+        }
+      }
+    ]
   },
   {
-    "role": "1085456103854313522",
-    "code": "pHuNHKfmAr",
-    "name": "Maid Boye",
-    "emoji": {
-      "name": "MaidBoye",
-      "id": "1085644411884552363"
-    }
-  },
-  {
-    "role": "1085456128500056068",
-    "code": "KaWyr383YH",
-    "name": "E621 NPM",
-    "emoji": {
-      "name": "E621",
-      "id": "1085644765174960190"
-    }
+    "name": "TheClyde",
+    "id": "1098658484507119657",
+    "message": null,
+    "roles": [
+      {
+        "role": "1098677354479493200",
+        "code": "RrHuFpySyC",
+        "name": "Degenerates",
+        "emoji": null
+      },
+      {
+        "role": "1099055696189861888",
+        "code": "r2hfxJr7Cy",
+        "name": "Furries",
+        "emoji": null
+      }
+    ]
   }
 ]

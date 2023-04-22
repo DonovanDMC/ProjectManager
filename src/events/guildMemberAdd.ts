@@ -7,5 +7,4 @@ export default new ClientEvent("guildMemberAdd", async function guildMemberAddEv
     if (member.pending === false) {
         await InviteTracker.applyRole(member);
     }
-
 });
