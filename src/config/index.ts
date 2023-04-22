@@ -45,7 +45,7 @@ export class Configuration extends PrivateConfiguration {
     }
 
     static get invites() {
-        return Object.fromEntries(Object.entries(this.roles).map(([k, v]) => [v.code, k]));
+        return Object.fromEntries(this.roles.map(role => [role.code, role.id]));
     }
 
     static get emojis() {
