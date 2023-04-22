@@ -11,7 +11,7 @@ const host = await readFile("/data/hostname", "utf8").then(val => val.trim(), ()
 
 const isDocker = await access("/.dockerenv").then(() => true, () => false) || await readFile("/proc/1/cgroup", "utf8").then(contents => contents.includes("docker"));
 let debugLogging: boolean;
-const projects = JSON.parse(await readFile(isDocker ? "/data/projects.json" : new URL("../../projects.json", import.meta.url).pathname, "utf8")) as IProjects;
+const projects = JSON.parse(await readFile(isDocker ? "/app/projects.json" : new URL("../../projects.json", import.meta.url).pathname, "utf8")) as IProjects;
 export class Configuration extends PrivateConfiguration {
     static get isDevelopment() {
         return !isDocker || host === "DONOVAN-PC";
