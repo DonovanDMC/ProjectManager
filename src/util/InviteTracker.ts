@@ -11,7 +11,7 @@ export default class InviteTracker {
             members = JSON.parse(await readFile(membersFile, "utf8")) as typeof members;
         }
 
-        const v = members[member.id];
+        const v = members[`${member.guildID}:${member.id}`];
         if (v === undefined) {
             return;
         }
@@ -21,13 +21,14 @@ export default class InviteTracker {
             await member.addRole(role);
         }
     }
+
     static async handleJoin(member: Member) {
         let contents: Record<string, number> = {};
         if (await access(invitesFile).then(() => true).catch(() => false)) {
             contents = JSON.parse(await readFile(invitesFile, "utf8")) as typeof contents;
         }
 
-        const invites = await member.guild.getInvites();
+        const invites = await member.client.rest.guilds.getInvites(member.guildID);
         let invite: Invite | undefined;
         for (const i of invites) {
             if (contents[i.code] === undefined) {
@@ -42,7 +43,7 @@ export default class InviteTracker {
         for (const i of invites) {
             contents[i.code] = i.uses;
         }
-        await writeFile(invitesFile, JSON.stringify(contents, null, 4));
+        await writeFile(invitesFile, JSON.stringify(contents, null, 2));
 
         if (invite === undefined) {
             return;
@@ -51,7 +52,7 @@ export default class InviteTracker {
         if (await access(membersFile).then(() => true).catch(() => false)) {
             members = JSON.parse(await readFile(membersFile, "utf8")) as typeof members;
         }
-        members[member.id] = invite.code;
+        members[`${member.guildID}:${member.id}`] = invite.code;
         await writeFile(membersFile, JSON.stringify(members, null, 4));
     }
 

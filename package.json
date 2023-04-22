@@ -29,7 +29,7 @@
     "@uwu-codes/logger": "^2.0.7",
     "@uwu-codes/status-server": "^1.0.1",
     "@uwu-codes/utils": "^1.3.3",
-    "oceanic.js": "^1.6.1-dev.6fed23a"
+    "oceanic.js": "^1.6.1-dev.18c4df6"
   },
   "type": "module",
   "devDependencies": {

@@ -25,7 +25,7 @@ export default new ClientEvent("ready", async function readyEvent() {
     const contents: Record<string, number> = {};
 
     for (const p of Config.projects) {
-        const invites = await this.guilds.get(Config.guild)!.getInvites();
+        const invites = await this.rest.guilds.getInvites(p.id);
         for (const i of invites) {
             contents[i.code] = i.uses;
         }

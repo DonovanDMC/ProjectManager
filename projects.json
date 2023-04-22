@@ -42,13 +42,13 @@
     "message": null,
     "roles": [
       {
-        "role": "1098677354479493200",
+        "id": "1098677354479493200",
         "code": "RrHuFpySyC",
         "name": "Degenerates",
         "emoji": null
       },
       {
-        "role": "1099055696189861888",
+        "id": "1099055696189861888",
         "code": "r2hfxJr7Cy",
         "name": "Furries",
         "emoji": null

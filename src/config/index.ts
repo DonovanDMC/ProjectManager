@@ -68,9 +68,8 @@ export class Configuration extends PrivateConfiguration {
                 autoReconnect: true,
                 concurrency:   "auto",
                 intents:       [
-                    "GUILDS",
-                    "GUILD_MEMBERS",
-                    "GUILD_INVITES"
+                    "GUILD_INVITES",
+                    "GUILD_MEMBERS"
                 ],
                 maxShards: "auto",
                 presence:  {
@@ -80,7 +79,8 @@ export class Configuration extends PrivateConfiguration {
                     }],
                     status: "dnd"
                 }
-            }
+            },
+            disableCache: "no-warning"
         };
     }
 
