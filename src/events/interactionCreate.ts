@@ -27,13 +27,13 @@ export default new ClientEvent("interactionCreate", async function interactionCr
     if (v && v.emoji !== null) {
         const member = interaction.member ?? await this.rest.guilds.getMember(interaction.guildID, interaction.user.id);
         if (member.roles.includes(v.id)) {
-            await this.rest.guilds.removeMemberRole(interaction.user.id, v.id, "Component Interaction");
+            await this.rest.guilds.removeMemberRole(interaction.guildID, interaction.user.id, v.id, "Component Interaction");
             return interaction.createMessage({
                 content: `Your access to the <:${v.emoji.name}:${v.emoji.id}> **${v.name}** project has been removed.`,
                 flags:   MessageFlags.EPHEMERAL
             });
         } else {
-            await this.rest.guilds.addMemberRole(interaction.user.id, v.id, "Component Interaction");
+            await this.rest.guilds.addMemberRole(interaction.guildID, interaction.user.id, v.id, "Component Interaction");
             return interaction.createMessage({
                 content: `You have been given access to the <:${v.emoji.name}:${v.emoji.id}> **${v.name}** project.`,
                 flags:   MessageFlags.EPHEMERAL
